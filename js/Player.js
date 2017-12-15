@@ -1,7 +1,7 @@
 class Player extends PhysicalObject {
 	constructor() {
 		super();
-		this.baseAcceleration = 10;
+		this.baseAcceleration = 500;
 		$(window).on('keydown keyup', this.respondToKeyboardInput.bind(this))
 	}
 

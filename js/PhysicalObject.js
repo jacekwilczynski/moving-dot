@@ -22,11 +22,12 @@ class PhysicalObject {
 		this.acceleration = new XY(); // px/s/s
 
 		this.updateRate = 50; // Hz
+		this.updateRateInverse = 1 / this.updateRate;
 		this.updateInterval = 1000 / this.updateRate; // ms
 
 		window.setInterval(function() {
-			this.position.inc(this.velocity.multiplied(1 / this.updateRate));
-			this.velocity.inc(this.acceleration);
+			this.position.inc(this.velocity.multiplied(this.updateRateInverse));
+			this.velocity.inc(this.acceleration.multiplied(this.updateRateInverse));
 			this.velocity.multiply(this.brakeFactor || 1)
 		}.bind(this), this.updateInterval);
 	}
